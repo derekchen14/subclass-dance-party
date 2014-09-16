@@ -75,7 +75,6 @@ $(document).ready(function(){
           var dancerA = window.dancers[i];
           var dancerB = window.dancers[j];
 
-
           var aPos = transformPosition(dancerA.$node.position());
           var bPos = transformPosition(dancerB.$node.position());
           var topDistance = Math.abs(aPos.top - bPos.top);

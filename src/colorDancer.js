@@ -10,8 +10,6 @@ var ColorDancer = function(top, left, timeBetweenSteps){
     $(this).css("background-color", "blue");
     $(this).css("border-radius", "25px")
   })
-
-  // window.destinationCounters[2]++
 };
 
 ColorDancer.prototype = Object.create(Dancer.prototype);
