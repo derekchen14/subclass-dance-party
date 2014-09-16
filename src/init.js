@@ -25,6 +25,7 @@ $(document).ready(function(){
       $("body").width() * Math.random(),
       Math.random() * 1000
     );
+    //dancer.$node.css('background-image', dancer.explosion );
     $('body').append(dancer.$node);
   });
 
@@ -35,6 +36,7 @@ $(document).ready(function(){
       var t;
       var l;
       dancer.isDancing = false;
+      dancer.$node.stop(true);
       dancer.oldPosition = dancer.$node.position();
       if (dancer.destination === 'bottom'){
         t = $('body').height() - dancer._wall - 50;
@@ -77,9 +79,9 @@ $(document).ready(function(){
           var bPos = transformPosition(dancerB.$node.position());
           var topDistance = Math.abs(aPos.top - bPos.top);
           var leftDistance = Math.abs(aPos.left - bPos.left);
-          var dist = Math.sqrt(topDistance + leftDistance);
+          var dist = Math.sqrt(Math.pow(topDistance,2) + Math.pow(leftDistance, 2));
 
-          if (dist <= 7){
+          if (dist <= 40){
             console.log('collision!');
             toRemove.push(i);
           }
@@ -89,8 +91,10 @@ $(document).ready(function(){
     toRemove.sort().reverse();
     for (i = 0; i < toRemove.length; i++){
       var item = window.dancers[toRemove[i]];
-      item.remove();
-      window.dancers.splice(toRemove[i],1);
+      if (item !== undefined){
+        item.explode();
+        window.dancers.splice(toRemove[i],1);
+      }
     }
   }, 100);
 
