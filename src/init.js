@@ -78,7 +78,7 @@ $(document).ready(function(){
           var bPos = transformPosition(dancerB.$node.position());
           var topDistance = Math.abs(aPos.top - bPos.top);
           var leftDistance = Math.abs(aPos.left - bPos.left);
-          var dist = Math.sqrt(topDistance + leftDistance);
+          var dist = Math.sqrt(Math.pow(topDistance,2) + Math.pow(leftDistance, 2));
 
           if (dist <= 7){
             console.log('collision!');
