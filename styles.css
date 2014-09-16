@@ -37,6 +37,12 @@ body, a:link, a:visited, a:active{
   cursor: pointer;
 }
 
+.score {
+  color: white;
+  font: 18px 'Arial', 'Helvetica', sans-serif;
+  padding: 5px 10px;
+}
+
 .colorDancer.expand {
   height: 50px;
   width: 50px;

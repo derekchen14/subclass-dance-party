@@ -1,6 +1,6 @@
 $(document).ready(function(){
   window.dancers = [];
-
+  window.score = 0;
   $.extend(jQuery.easing, {
     bounce: function (x, t, b, c, d) {
       if ((t/=d) < (1/2.75)) {
@@ -83,6 +83,8 @@ $(document).ready(function(){
 
           if (dist <= 40){
             console.log('collision!');
+            window.score += Math.floor(Math.random() * 51) + 250;
+            $('.score').text('Score: ' + window.score);
             toRemove.push(i);
           }
         }
@@ -91,10 +93,22 @@ $(document).ready(function(){
     toRemove.sort().reverse();
     for (i = 0; i < toRemove.length; i++){
       var item = window.dancers[toRemove[i]];
-      if (item !== undefined){
+      if (item){
         item.explode();
         window.dancers.splice(toRemove[i],1);
       }
+    }
+    if (window.score >= 10000){
+      for (var i = 0; i < window.dancers.length; i++){
+        var item = window.dancers[i];
+        if (item){
+          item.explode();
+          window.dancers.splice(i, 1);
+        }
+      }
+      window.score = 0;
+      alert("You win!\nYou are a dance machine!");
+
     }
   }, 100);
 
