@@ -2,8 +2,6 @@ var BlinkyDancer = function(top, left, timeBetweenSteps) {
   // inherits the properties from the parent class
   Dancer.call(this, top, left, timeBetweenSteps);
   this.destination = 'left';
-
-  //window.destinationCounters[1]++;
 };
 
 /* duplicates the parent class's prototype through pseudoclassical

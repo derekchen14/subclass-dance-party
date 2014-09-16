@@ -73,7 +73,6 @@ $(document).ready(function(){
           var dancerA = window.dancers[i];
           var dancerB = window.dancers[j];
 
-
           var aPos = transformPosition(dancerA.$node.position());
           var bPos = transformPosition(dancerB.$node.position());
           var topDistance = Math.abs(aPos.top - bPos.top);
@@ -90,7 +89,6 @@ $(document).ready(function(){
     toRemove.sort().reverse();
     for (i = 0; i < toRemove.length; i++){
       var item = window.dancers[toRemove[i]];
-      console.log('item:', item);
       item.remove();
       window.dancers.splice(toRemove[i],1);
     }
