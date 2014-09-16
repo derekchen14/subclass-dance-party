@@ -41,16 +41,16 @@ $(document).ready(function(){
         l = dancer._wall + 50 * counters[2];
         counters[2]++;
       } else if (dancer.destination === 'left'){
-        t = dancer._wall + 50 * counters[1];
+        t = dancer._wall + 50 + 50 * counters[1];
         l = dancer._wall;
         counters[1]++;
       } else if (dancer.destination === 'right'){
-        t = dancer._wall + 50 * counters[3];
+        t = dancer._wall + 50 + 50 * counters[3];
         l = $('body').width() - dancer._wall - 50;
         counters[3]++;
       } else if (dancer.destination === 'top'){
-        t = dancer._wall;
-        l = dancer._wall + 50 * counters[0];
+        t = dancer._wall + 50;
+        l = dancer._wall+140 + 50 * counters[0];
         counters[0]++;
       }
      dancer.$node.animate({top:t, left:l}, 1000);
@@ -65,6 +65,43 @@ $(document).ready(function(){
     };
   });
 
+  setInterval(function(){
+    var toRemove = []
+    for (var i = 0; i < window.dancers.length; i++){
+      for (var j = 0; j < window.dancers.length; j++){
+        if (i !== j){
+          var dancerA = window.dancers[i];
+          var dancerB = window.dancers[j];
+
+
+          var aPos = transformPosition(dancerA.$node.position());
+          var bPos = transformPosition(dancerB.$node.position());
+          var topDistance = Math.abs(aPos.top - bPos.top);
+          var leftDistance = Math.abs(aPos.left - bPos.left);
+          var dist = Math.sqrt(topDistance + leftDistance);
+
+          if (dist <= 7){
+            console.log('collision!');
+            toRemove.push(i);
+          }
+        }
+      }
+    }
+    toRemove.sort().reverse();
+    for (i = 0; i < toRemove.length; i++){
+      var item = window.dancers[toRemove[i]];
+      console.log('item:', item);
+      item.remove();
+      window.dancers.splice(toRemove[i],1);
+    }
+  }, 100);
+
+  var transformPosition = function(position){
+    pos = {};
+    pos.top = parseInt(position.top)
+    pos.left = parseInt(position.left)
+    return pos;
+  }
 
 });
 

@@ -21,6 +21,10 @@ Dancer.prototype.setPosition = function(top, left){
   this.$node.css(styleSettings);
 };
 
+Dancer.prototype.remove = function(){
+  this.$node.remove();
+}
+
 
 
 
