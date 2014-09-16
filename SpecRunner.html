@@ -10,13 +10,28 @@
   <script>
     mocha.setup('bdd');
     window.expect = chai.expect;
+    window.dancers = [];
     $(function() {
       window.mochaPhantomJS ? mochaPhantomJS.run() : mocha.run();
     });
   </script>
-  <script src="spec/blinkyDancerSpec.js"></script>
   <script src="src/dancer.js"></script>
+
+  <script src="src/colorDancer.js"></script>
+  <script src="src/animalDancer.js"></script>
   <script src="src/blinkyDancer.js"></script>
+  <script src="src/bottomDancer.js"></script>
+
+  <script src="src/batDancer.js"></script>
+  <script src="src/beeDancer.js"></script>
+  <script src="src/blueDancer.js"></script>
+
+  <script src="spec/blinkyDancerSpec.js"></script>
+  <script src="spec/blueDancerSpec.js"></script>
+  <script src="spec/batDancerSpec.js"></script>
+  <script src="spec/beeDancerSpec.js"></script>
+  <script src="spec/bottomDancerSpec.js"></script>
+
 </head>
 <body>
 <div id="mocha"></div>
