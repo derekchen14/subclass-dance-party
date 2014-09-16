@@ -80,7 +80,7 @@ $(document).ready(function(){
           var leftDistance = Math.abs(aPos.left - bPos.left);
           var dist = Math.sqrt(Math.pow(topDistance,2) + Math.pow(leftDistance, 2));
 
-          if (dist <= 7){
+          if (dist <= 75){
             console.log('collision!');
             toRemove.push(i);
           }
