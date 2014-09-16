@@ -29,10 +29,42 @@ $(document).ready(function(){
   });
 
   $('.lineUpButton').click(function(){
+    var counters = [0,0,0,0];  //top left bottom right
     for (var i = 0; i < window.dancers.length; i++){
-     var dancer = window.dancers[i];
-     dancer.goToDestination(i * 50);
+      var dancer = window.dancers[i];
+      var t;
+      var l;
+      dancer.isDancing = false;
+      dancer.oldPosition = dancer.$node.position();
+      if (dancer.destination === 'bottom'){
+        t = $('body').height() - dancer._wall - 50;
+        l = dancer._wall + 50 * counters[2];
+        counters[2]++;
+      } else if (dancer.destination === 'left'){
+        t = dancer._wall + 50 * counters[1];
+        l = dancer._wall;
+        counters[1]++;
+      } else if (dancer.destination === 'right'){
+        t = dancer._wall + 50 * counters[3];
+        l = $('body').width() - dancer._wall - 50;
+        counters[3]++;
+      } else if (dancer.destination === 'top'){
+        t = dancer._wall;
+        l = dancer._wall + 50 * counters[0];
+        counters[0]++;
+      }
+     dancer.$node.animate({top:t, left:l}, 1000);
     }
   });
+
+  $('.startDancing').click(function(){
+    for (var i = 0; i < window.dancers.length; i++){
+      var dancer = window.dancers[i];
+      dancer.$node.animate(dancer.oldPosition, 1000);
+      dancer.isDancing = true;
+    };
+  });
+
+
 });
 

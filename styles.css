@@ -27,7 +27,7 @@ body, a:link, a:visited, a:active{
   border-radius: 10px;
   position:absolute;
 }
-.lineUpButton{
+.lineUpButton, .startDancing{
   padding:5px 12px;
   color: #F2E055;
   background-color: green;
