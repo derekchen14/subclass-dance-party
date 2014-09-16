@@ -58,3 +58,7 @@ body, a:link, a:visited, a:active{
   width: 80px;
   background-size: 80px 70px;
 }
+
+.dancer.hidden {
+  background-color: transparent;
+}
