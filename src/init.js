@@ -81,9 +81,9 @@ $(document).ready(function(){
           var leftDistance = Math.abs(aPos.left - bPos.left);
           var dist = Math.sqrt(Math.pow(topDistance,2) + Math.pow(leftDistance, 2));
 
-          if (dist <= 40){
+          if (dist <= 30){
             console.log('collision!');
-            window.score += Math.floor(Math.random() * 51) + 250;
+            window.score += Math.floor(Math.random() * 51) + 50;
             $('.score').text('Score: ' + window.score);
             toRemove.push(i);
           }
